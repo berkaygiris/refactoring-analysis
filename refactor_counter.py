@@ -1,16 +1,18 @@
 import sys
 import json
-
+DATA_DIR = "data/"
 help_cmds = {"-h", "--h", "-help", "--help"}
+
 if len(sys.argv) < 2 or sys.argv[1] in help_cmds:
     sys.exit("Use as \"refactor_counter.py <projectname>")
     
 projectname = str(sys.argv[1])
 
-with open(projectname + "-rminer.json", "r") as f:
+
+with open(DATA_DIR + projectname + "-rminer.json", "r") as f:
     dict = json.load(f, strict=False)
 
-outfile = open(projectname + "-refactoring.commits", "w")
+outfile = open(DATA_DIR + projectname + "-refactoring.commits", "w")
 
 count_commits = 0
 count_refactorings = 0
